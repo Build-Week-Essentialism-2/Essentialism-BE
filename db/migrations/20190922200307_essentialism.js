@@ -21,19 +21,21 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('auth')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE')
     })
     .createTable('tasks', tbl => {
         tbl.increments()
         tbl.string('task_name')
             .notNullable(); 
         tbl.string('task_description')
-        tbl.string('created_on')
-        tbl.string('due_on')
         tbl.integer('user_id')
             .unsigned()
             .notNullable()
             .references('id')
             .inTable('auth')
+            .onUpdate('CASCADE')
+            .onDelete('CASCADE')
     })
 };
 
