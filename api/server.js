@@ -18,7 +18,7 @@ const taskRouter = require('../tasks/task-model');
 
 // routing
 server.use('/auth/', authRouter); 
-server.use('/api/values', valueRouter); 
-server.use('/api/tasks', taskRouter); 
+// server.use('/api/values', valueRouter); 
+// server.use('/api/tasks', taskRouter); 
 
 module.exports = server; 
