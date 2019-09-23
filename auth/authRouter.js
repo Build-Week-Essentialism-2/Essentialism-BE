@@ -8,9 +8,16 @@ const secrets = require('../config/secrets');
 // model imports 
 const Users = require('./auth-model'); 
 
+// middleware imports 
+const passCheck = require('../middleware/login-middleware'); 
+
 // login
-router.post('/login', (req, res) => {
+router.post('/login', passCheck, (req, res) => {
     const { username, password } = req.body; 
+
+    // const token = generateToken(user); 
+
+    // res.status(200).json({ message: `Welcome, ${user.username}!`, token })
 
     Users.findUser({ username })
         .first()
@@ -22,13 +29,17 @@ router.post('/login', (req, res) => {
         .catch(err => {
             const statCode = 500; 
 
-            res.status(statCode).json({ message: `Error message ${statCode} with the error message ${err}`})
+            res.status(statCode).json({ error: `${err}` })
         })
 })
 
 // register
 router.post('/register', (req, res) => {
     const body = req.body; 
+
+    const hash = bcrypt.hashSync(body.password, 12); 
+
+    body.password = hash; 
 
     Users.addUser(body)
         .then(user => {
@@ -37,7 +48,7 @@ router.post('/register', (req, res) => {
         .catch(err => {
             const statCode = 500;
 
-            res.status(statCode).json({ message: `Error message ${statCode} with the error message ${err}`})
+            res.status(statCode).json({ error: `${err}` })
         })
 })
 
@@ -48,6 +59,9 @@ router.delete('/delete', (req, res) => {
     Users.deleteUser({ username })
         .then(user => {
             res.status(410).json({ message: `Account deleted successfully.  We're sorry to see you go!`})
+        })
+        .catch(err => {
+            res.status(500).json({ message: `Account couldn't be deleted at this time.  Our bad.  Try again later!`, err })
         })
 })
 
