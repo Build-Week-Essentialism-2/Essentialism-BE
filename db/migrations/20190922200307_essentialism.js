@@ -16,6 +16,11 @@ exports.up = function(knex) {
         tbl.string('value')
             .unique()
         tbl.boolean('priority')
+        tbl.integer('user_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('auth')
     })
     .createTable('tasks', tbl => {
         tbl.increments()
@@ -24,6 +29,11 @@ exports.up = function(knex) {
         tbl.string('task_description')
         tbl.string('created_on')
         tbl.string('due_on')
+        tbl.integer('user_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('auth')
     })
 };
 
