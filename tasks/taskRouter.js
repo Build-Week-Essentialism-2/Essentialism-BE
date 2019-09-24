@@ -14,7 +14,7 @@ router.get('/', restricted, (req, res) => {
 
     Tasks.getAllTasks()
         .then(task => {
-            res.status(200).json({ message: `Success`, task })
+            res.status(200).json(task)
         })
         .catch(err => {
             res.status(500).json({ message: `There was an error on our end`, err })
@@ -25,10 +25,11 @@ router.get('/', restricted, (req, res) => {
 router.get('/:id', restricted, (req, res) => {
     const id = req.params; 
 
-    Tasks.getTask({ id })
+    Tasks.getTask(id)
         .first()
         .then(task => {
-            res.status(410).json({ message: `Task deleted successfully.`, task })
+            // console.log(task); 
+            res.status(200).json(task)
         })
         .catch(err => {
             res.status(500).json({ message: `There was a problem on our end.  Please try again later.`, err })
@@ -56,10 +57,9 @@ router.post('/', restricted, (req, res) => {
 router.delete('/:id', restricted, (req, res) => {
     const id = req.params
 
-    Tasks.delTask({ id })
-        .first()
+    Tasks.delTask(id)
         .then(task => {
-            res.status(410).json({ message: `Task deleted successfully.`, task })
+            res.status(410).json(task)
         })
         .catch(err => {
             res.status(500).json({ message: `There was a problem on our end.`, err })
@@ -71,7 +71,7 @@ router.delete('/', restricted, (req, res) => {
     
     Tasks.delAllTasks()
         .then(task => {
-            res.status(410).json({ message: `All tasks deleted.  That was brave of you.`, task })
+            res.status(410).json(task)
         })
         .catch(err => {
             res.status(500).json({ message: `Unable to delete tasks.  Try again later!`, err })

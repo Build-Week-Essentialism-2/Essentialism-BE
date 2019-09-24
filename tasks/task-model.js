@@ -13,6 +13,7 @@ function addTask(body) {
 }
 
 function getTask(id) {
+    // console.log(id); 
     return db('tasks').where(id); 
 }
 
@@ -21,7 +22,7 @@ function getAllTasks() {
 }
 
 function delTask(id) {
-    return db('tasks').where({ id }); 
+    return db('tasks').where(id).del(); 
 }
 
 function delAllTasks() { 

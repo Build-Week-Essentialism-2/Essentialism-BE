@@ -25,12 +25,12 @@ router.post('/login', passCheck, (req, res) => {
         .then(user => {
             const token = generateToken(user); 
 
-            res.status(200).json({ message: `Welcome, ${user.username}!`, token }); 
+            res.status(200).json({ message: `Welcome, ${user.username}!`, token: `${token}`, user_id: user.id }); 
         })
         .catch(err => {
             const statCode = 500; 
 
-            res.status(statCode).json({ error: `${err}` })
+            res.status(statCode).json(error)
         })
 })
 
