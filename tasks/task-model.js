@@ -14,6 +14,6 @@ function removeTask(task) {
     return db('tasks').where(task); 
 }
 
-function delAllTasks() {
+function delAllTasks() { 
     return db('tasks').del(); 
 }
