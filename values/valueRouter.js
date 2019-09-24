@@ -4,6 +4,73 @@ const router = require('express').Router();
 // model imports 
 const Values = require('./value-model'); 
 
+// ============ GET Requests ==============
+
+// get all values 
+router.get('/', (req, res) => {
+    const user_id = req.headers.user_id
+    
+    Values.getValues({ user_id })
+        .then(val => {
+            val.map(value => {
+                if(value.priority === 1) {
+                    return value.priority = true; 
+                } else if (value.priority === 0) {
+                    return value.priority = false; 
+                } else {
+                    return value; 
+                }
+            })
+            res.status(200).json(val); 
+        })
+        .catch(err => {
+            res.status(500).json({ message: `${err}` }); 
+        })
+})
+
+// get top 10 values
+router.get('/top10', (req, res) => {
+    const user_id = req.headers.user_id 
+    // console.log({ user_id })
+    Values.getIndiff({ user_id })
+        .then(val => {
+            val.map(value => {
+                if(value.priority === 1) {
+                    return value.priority = true; 
+                } else if (value.priority === 0){
+                    return value.priority = false; 
+                } else {
+                    return value; 
+                }
+            })
+            res.status(200).json(val); 
+        })
+        .catch(err => {
+            res.status(500).json(err); 
+        })
+})
+
+// get top 3 values 
+router.get('/top3', (req, res) => {
+    const user_id = req.headers.user_id  
+
+    Values.getImportant({ user_id })
+        .then(val => {
+            val.map(value => {
+                if(value.priority === 1) {
+                    return value.priority = true; 
+                } else if (value.priority === 0){
+                    return value.priority = false; 
+                } else {
+                    return value; 
+                }
+            })
+            res.status(200).json(val); 
+        })
+        .catch(err => {
+            res.status(500).json(err); 
+        })
+})
 
 // ============ POST Requests ==============
 router.post('/', (req, res) => {
