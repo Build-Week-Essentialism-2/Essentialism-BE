@@ -2,18 +2,23 @@ const db = require('../db/db-config');
 
 module.exports = {
     addTask,
-    removeTask, 
-    delAllTasks
+    delTask, 
+    delAllTasks,
+    getTasks
 }
 
 function addTask(body) {
     return db('tasks').insert(body); 
 }
 
-function removeTask(task) {
-    return db('tasks').where(task); 
+function getTasks() {
+    return db('tasks'); 
 }
 
-function delAllTasks() {
+function delTask(taskName) {
+    return db('tasks').where(taskName); 
+}
+
+function delAllTasks() { 
     return db('tasks').del(); 
 }
