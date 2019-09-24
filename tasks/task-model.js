@@ -4,19 +4,24 @@ module.exports = {
     addTask,
     delTask, 
     delAllTasks,
-    getTasks
+    getAllTasks, 
+    getTask
 }
 
 function addTask(body) {
     return db('tasks').insert(body); 
 }
 
-function getTasks() {
+function getTask(id) {
+    return db('tasks').where(id); 
+}
+
+function getAllTasks() {
     return db('tasks'); 
 }
 
-function delTask(taskName) {
-    return db('tasks').where(taskName); 
+function delTask(id) {
+    return db('tasks').where(id); 
 }
 
 function delAllTasks() { 
