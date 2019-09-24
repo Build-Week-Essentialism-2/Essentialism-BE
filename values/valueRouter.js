@@ -5,11 +5,11 @@ const router = require('express').Router();
 const Values = require('./value-model'); 
 
 
-// ============ PUT Requests ==============
-router.put('/', (req, res) => {
+// ============ POST Requests ==============
+router.post('/', (req, res) => {
     const body = req.body; 
 
-    Values.updateValue(body)
+    Values.addValue(body)
         .then(val => {
             res.status(204).json({ message: `Value updated successfully!`, value: `${val}` })
         })
@@ -20,3 +20,26 @@ router.put('/', (req, res) => {
 
 // export
 module.exports = router; 
+
+
+
+
+//make a GET request 
+
+// shaped shape 
+// const value =   
+// {
+//                 value: "relationships",
+//                 priority: false,
+//                 user_id: localStorage.getItem('user_id')
+//                 }
+
+// const {value, setValue} = useState()
+
+// setValue(
+// {
+//     ...value, 
+//     priority: null, 
+//     user_id: localStorage.getItem('user_id')
+// })
+

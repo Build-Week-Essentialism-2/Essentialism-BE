@@ -1,9 +1,9 @@
 const db = require('../db/db-config'); 
 
 module.exports = {
-    updateValue
+    addValue
 }
 
-function updateValue(body) {
-    return db('values').where({ value }).update({ priority })
+function addValue(body) {
+    return db('values').insert(body); 
 }
