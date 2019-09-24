@@ -21,7 +21,7 @@ function getAllTasks() {
 }
 
 function delTask(id) {
-    return db('tasks').where(id); 
+    return db('tasks').where({ id }); 
 }
 
 function delAllTasks() { 
