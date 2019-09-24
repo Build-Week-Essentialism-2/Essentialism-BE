@@ -20,7 +20,7 @@ https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com (Hint:
 | POST (register) | id of created user | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/auth/register | 201 |
 | POST (login) | JWT token and user_id | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/auth/login | 201 |
 | POST | ID of created task | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks | 201 |
-| POST | ID of created value | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/value | 201 |
+| POST | ID of created value | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/values | 201 |
 
 ## `DELETE` Requests
 | Req Type | Return Data | URL | Status Code |
