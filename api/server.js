@@ -14,7 +14,7 @@ server.use(helmet());
 // router imports 
 const authRouter = require('../auth/authRouter'); 
 // const valueRouter = require('../values/valueRouter'); 
-const taskRouter = require('../tasks/task-model');
+const taskRouter = require('../tasks/taskRouter');
 
 // routing
 server.use('/auth/', authRouter); 
