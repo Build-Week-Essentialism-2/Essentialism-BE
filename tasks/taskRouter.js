@@ -53,3 +53,5 @@ router.delete('/', (req, res) => {
             res.status(500).json({ message: `Unable to delete tasks.  Try again later!`, err })
         })
 })
+
+module.exports = router; 
