@@ -11,7 +11,10 @@ https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com (Hint:
 ## `GET` Requests
 | Req Type | Return Data | URL | Status Code |
 | :------- | :---------- | :-- | :---------- |
-| GET | All tasks | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks | 200 |
+| GET | all values, template | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/values | 200 |
+| GET | top 10 values | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/values/top10 | 200 |
+| GET | top 3 values | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/values/top3 | 200 |
+| GET | all tasks  | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks/ | 200 |
 | GET | Task by ID | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks/:id | 200 |
 
 ## `POST` Requests
