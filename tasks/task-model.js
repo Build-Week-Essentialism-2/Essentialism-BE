@@ -9,7 +9,7 @@ module.exports = {
 }
 
 function addTask(body) {
-    return db('tasks').insert(body); 
+    return db('tasks').insert(body, 'id'); 
 }
 
 function getTask(id) {

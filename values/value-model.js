@@ -8,7 +8,7 @@ module.exports = {
 }
 
 function addValue(body) {
-    return db('values').insert(body); 
+    return db('values').insert(body, 'id'); 
 }
 
 function getValues(user_id) {

@@ -7,7 +7,7 @@ module.exports = {
 }
 
 function addUser(body) {
-    return db('auth').insert(body); 
+    return db('auth').insert(body, 'id'); 
 }
 
 function findUser(user) {
