@@ -1,12 +1,15 @@
+// set up router
 const router = ('express').Router(); 
 
 // model imports 
 const Tasks = require('./task-model'); 
 
+
+// ================ GET Requests =================
 // get tasks
 router.get('/', (req, res) => {
 
-    Tasks.getTasks()
+    Tasks.getAllTasks()
         .then(task => {
             res.status(200).json({ message: `Success`, task })
         })
@@ -14,6 +17,22 @@ router.get('/', (req, res) => {
             res.status(500).json({ message: `There was an error on our end`, err })
         })
 })
+
+// get specific task
+router.get('/:id', (req, res) => {
+    const id = req.params; 
+
+    Tasks.getTask({ id })
+        .first()
+        .then(task => {
+            res.status(410).json({ message: `Task deleted successfully.`, task })
+        })
+        .catch(err => {
+            res.status(500).json({ message: `There was a problem on our end.  Please try again later.`, err })
+        })
+})
+
+// =========== POST Requests ============
 
 // add task
 router.post('/', (req, res) => {
@@ -28,11 +47,13 @@ router.post('/', (req, res) => {
         })
 })
 
-// delete task
-router.delete('/', (req, res) => {
-    const { taskName } = req.body
+// =========== DELETE Requests ============
 
-    Tasks.delTask({ taskname })
+// delete task
+router.delete('/:id', (req, res) => {
+    const id = req.params
+
+    Tasks.delTask({ id })
         .first()
         .then(task => {
             res.status(410).json({ message: `Task deleted successfully.`, task })
