@@ -4,10 +4,13 @@ const router = ('express').Router();
 // model imports 
 const Tasks = require('./task-model'); 
 
+// middleware imports 
+const restricted = require('../middleware/restricted-middleware'); 
+
 
 // ================ GET Requests =================
 // get tasks
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
 
     Tasks.getAllTasks()
         .then(task => {
@@ -19,7 +22,7 @@ router.get('/', (req, res) => {
 })
 
 // get specific task
-router.get('/:id', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
     const id = req.params; 
 
     Tasks.getTask({ id })
@@ -35,7 +38,7 @@ router.get('/:id', (req, res) => {
 // =========== POST Requests ============
 
 // add task
-router.post('/', (req, res) => {
+router.post('/', restricted, (req, res) => {
     const body = req.body; 
 
     Tasks.addTask(body)
@@ -50,7 +53,7 @@ router.post('/', (req, res) => {
 // =========== DELETE Requests ============
 
 // delete task
-router.delete('/:id', (req, res) => {
+router.delete('/:id', restricted, (req, res) => {
     const id = req.params
 
     Tasks.delTask({ id })
@@ -64,7 +67,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // delete ALL TASKS
-router.delete('/', (req, res) => {
+router.delete('/', restricted, (req, res) => {
     
     Tasks.delAllTasks()
         .then(task => {
