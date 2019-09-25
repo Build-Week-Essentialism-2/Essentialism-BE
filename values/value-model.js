@@ -7,10 +7,16 @@ module.exports = {
     getValues
 }
 
-function addValues(body) {
+// function addValues(body) {
 
-    // do map here of array that frontend sends (which will be saved to state once they GET all the default values)
-    return db('values').insert(body, 'id'); 
+//     // do map here of array that frontend sends (which will be saved to state once they GET all the default values)
+//     return db('values').insert(body, 'id'); 
+// }
+
+function addValues(valArr) {
+    valArr.forEach(val => {
+        return db('values').insert(val, 'id'); 
+    })
 }
 
 function getValues(user_id) {
