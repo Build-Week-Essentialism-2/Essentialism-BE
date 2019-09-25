@@ -1,13 +1,15 @@
 const db = require('../db/db-config'); 
 
 module.exports = {
-    addValue,
+    addValues,
     getIndiff,
     getImportant,
     getValues
 }
 
-function addValue(body) {
+function addValues(body) {
+
+    // do map here of array that frontend sends (which will be saved to state once they GET all the default values)
     return db('values').insert(body, 'id'); 
 }
 

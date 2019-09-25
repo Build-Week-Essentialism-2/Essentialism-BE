@@ -76,7 +76,7 @@ router.get('/top3', (req, res) => {
 router.post('/', (req, res) => {
     const body = req.body; 
 
-    Values.addValue(body)
+    Values.addValues(body)
         .then(val => {
             res.status(204).json({ message: `Value updated successfully!`, value: `${val}` })
         })
