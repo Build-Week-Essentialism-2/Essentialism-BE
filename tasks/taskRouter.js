@@ -70,8 +70,9 @@ router.delete('/:id', restricted, (req, res) => {
 
 // delete ALL TASKS
 router.delete('/', restricted, (req, res) => {
-    
-    Tasks.delAllTasks()
+    const body = req.body
+
+    Tasks.delAllTasks(body)
         .then(task => {
             res.status(410).json(task)
         })
