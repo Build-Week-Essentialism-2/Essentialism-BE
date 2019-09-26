@@ -24,9 +24,9 @@ router.get('/', restricted, (req, res) => {
 // get specific task
 router.get('/:id', restricted, (req, res) => {
     const id = req.params; 
+    const { user_id } = req.headers
 
-    Tasks.getTask(id)
-        .first()
+    Tasks.getTask(user_id)
         .then(task => {
             // console.log(task); 
             res.status(200).json(task)

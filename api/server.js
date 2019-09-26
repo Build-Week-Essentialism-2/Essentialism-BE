@@ -9,16 +9,16 @@ const server = express();
 // middleware instantiation
 server.use(express.json()); 
 server.use(cors({
-  origin: '*'
+  origin: '*'  // remedies CORS origin errors the frontend 
 })); 
-server.use(helmet()); 
+server.use(helmet()); // hides "Powered By Express" is the header
 
-// router imports 
+// router file imports 
 const authRouter = require('../auth/authRouter'); 
 const valueRouter = require('../values/valueRouter'); 
 const taskRouter = require('../tasks/taskRouter');
 
-// routing
+// setting up routing
 server.use('/auth/', authRouter); 
 server.use('/api/values', valueRouter); 
 server.use('/api/tasks', taskRouter); 

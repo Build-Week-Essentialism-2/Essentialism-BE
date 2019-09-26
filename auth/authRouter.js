@@ -15,9 +15,6 @@ const passCheck = require('../middleware/login-middleware');
 // login
 router.post('/login', passCheck, (req, res) => {
     const { username, password } = req.body; 
-    // const token = generateToken(user); 
-
-    // res.status(200).json({ message: `Welcome, ${user.username}!`, token })
 
     Users.findUser({ username })
         .first()
@@ -27,9 +24,7 @@ router.post('/login', passCheck, (req, res) => {
             res.status(200).json({ message: `Welcome, ${user.username}!`, token: `${token}`, user_id: user.id }); 
         })
         .catch(err => {
-            const statCode = 500; 
-
-            res.status(statCode).json(error)
+            res.status(500).json({ message: `There was a problem on our end.`, err })
         })
 })
 

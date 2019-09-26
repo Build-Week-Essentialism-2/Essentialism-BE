@@ -13,9 +13,9 @@ function addTask(taskArr) {
     return db('tasks').insert(taskArr, 'id'); 
 }
 
-function getTask(id) {
-    // console.log(id); 
-    return db('tasks').where(id); 
+function getTask(user_id) {
+    console.log({user_id}); 
+    return db('tasks').where({ user_id }); 
 }
 
 function getAllTasks() {
