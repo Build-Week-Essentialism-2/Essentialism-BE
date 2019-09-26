@@ -26,6 +26,6 @@ function delTask(id) {
     return db('tasks').where(id).del(); 
 }
 
-function delAllTasks() { 
-    return db('tasks').del(); 
+function delAllTasks(user_id) { 
+    return db('tasks').where({ user_id }).del(); 
 }

@@ -57,11 +57,11 @@ router.post('/', restricted, (req, res) => {
 
 // delete task
 router.delete('/:id', restricted, (req, res) => {
-    const id = req.params
+    const body = req.body
 
-    Tasks.delTask(id)
+    Tasks.delTask(body)
         .then(task => {
-            res.status(410).json(task)
+            res.status(200).json(task)
         })
         .catch(err => {
             res.status(500).json({ message: `There was a problem on our end.`, err })
