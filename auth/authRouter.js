@@ -15,7 +15,6 @@ const passCheck = require('../middleware/login-middleware');
 // login
 router.post('/login', passCheck, (req, res) => {
     const { username, password } = req.body; 
-
     // const token = generateToken(user); 
 
     // res.status(200).json({ message: `Welcome, ${user.username}!`, token })
@@ -44,7 +43,7 @@ router.post('/register', (req, res) => {
 
     Users.addUser(body)
         .then(user => {
-            res.status(201).json({ message: `User created.  Welcome, ${body.username}!`})
+            res.status(201).json({ message: `User created.  Welcome, ${body.username}!`, user})
         })
         .catch(err => {
             const statCode = 500;

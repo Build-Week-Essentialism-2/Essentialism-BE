@@ -40,16 +40,19 @@ router.get('/:id', restricted, (req, res) => {
 
 // add task
 router.post('/', restricted, (req, res) => {
-    const body = req.body; 
+    const body = req.body;
 
-    Tasks.addTask(body)
-        .then(task => {
+        Tasks.addTask(body)
+        .then((task) => {
+            console.log('check'); 
             res.status(201).json({ message: `Task created successfully!`, task })
         })
         .catch(err => {
+            console.log(err); 
             res.status(500).json({ message: `There was an error on our end.`, err })
         })
-})
+        
+    })
 
 // =========== DELETE Requests ============
 

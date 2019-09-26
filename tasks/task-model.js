@@ -8,10 +8,9 @@ module.exports = {
     getTask
 }
 
+
 function addTask(taskArr) {
-    taskArr.forEach(task => {
-        return db('tasks').insert(task, 'id'); 
-    })
+    return db('tasks').insert(taskArr, 'id'); 
 }
 
 function getTask(id) {
