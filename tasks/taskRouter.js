@@ -23,7 +23,6 @@ router.get('/', restricted, (req, res) => {
 
 // get specific task
 router.get('/:id', restricted, (req, res) => {
-    const id = req.params; 
     const { user_id } = req.headers
 
     Tasks.getTask(user_id)
