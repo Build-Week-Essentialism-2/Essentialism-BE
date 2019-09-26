@@ -29,7 +29,7 @@ https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com (Hint:
 | Req Type | Return Data | URL | Status Code |
 | :------- | :---------- | :-- | :---------- |
 | DELETE | All tasks | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks | 410 |
-| DELETE | Task by ID | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks/:id | 410 |
+| DELETE | All tasks by User ID | https://cors-anywhere.herokuapp.com/https://essentialism-be.herokuapp.com/api/tasks/:id | 410 |
 
 
 
